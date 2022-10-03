@@ -11,7 +11,7 @@ import {useHistory} from "react-router-dom";
 import { ThumbUpAltOutlined } from "@material-ui/icons";
 
 export default function Post({post/*, currentEditingId, setCurrentEditingId*/}){
-    const {creater, createrId, title, message, tags, _id, selectedFile, createdAt, likeCount, likedUsers} = post;
+    const {creater, createrId, title, message, tags, _id, selectedFile, createdAt, likedUsers} = post;
     const classes = useStyles();
     const tagString = tags.map(tag => '#' + tag + ' ');
     const dispatch = useDispatch();

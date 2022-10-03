@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography,TextField, Button} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addComment } from '../../actions/actions';
 import useStyles from './styles';
 
@@ -30,6 +30,7 @@ const CommentSection = ({post}) => {
     return (
         <div className={classes.commentOuterContainer}>
             <div className={classes.commentInnerContainer}>
+                <Typography variant="h6">Comments</Typography>
                         {comments.map((comment) => (
                             <Typography key={comment._id} variant="subtitle2">{comment}</Typography>
                         ))}

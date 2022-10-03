@@ -1,6 +1,6 @@
 import React from "react";
 import { Pagination, PaginationItem } from '@material-ui/lab';
-import { Link} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts} from "../../actions/actions";
 import useStyles from './styles';
@@ -10,9 +10,12 @@ const Paginate = () => {
   const dispatch = useDispatch()
   const classes = useStyles();
   const {totalPage} = useSelector(state => state.posts? state.posts : 1);
-  const [page, setPage] = React.useState(1);
+  const query = new URLSearchParams(useLocation().search); //useLocation().search contains queryString
+  const [page, setPage] = React.useState(query.get("page") || 1); //set to page from URL or 1 if page query doesn't exist
+  
 
   React.useEffect(() => {
+    //console.log(query.get('page'));
     dispatch(getPosts(page));
   }, [page])
 

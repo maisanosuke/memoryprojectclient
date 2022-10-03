@@ -62,7 +62,6 @@ const Auth = () => {
 
     async function googleSignIn(res) {
       const decoded = jwt_decode(res.credential);
-      console.log(decoded);
       const { name, email, picture, sub } = decoded;
       const user = {
           name: name,

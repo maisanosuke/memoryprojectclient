@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//const axiosAPI = axios.create({baseURL: "http://localhost:3001"});
-const axiosAPI = axios.create({baseURL: "https://mernmemoryappserver.herokuapp.com/"});
+const axiosAPI = axios.create({baseURL: "http://localhost:3001"});
+//const axiosAPI = axios.create({baseURL: "https://mernmemoryappserver.herokuapp.com/"});
 
 //config (add token to header) for each Request before sending out to server
 axiosAPI.interceptors.request.use((config) => {
@@ -17,7 +17,6 @@ export const fetchSearchPosts = (searchQuery) => axiosAPI.get(`posts/search?sear
 //console.log(`/posts/search?searchQuery=${searchQuery.search || 'none' }&tags=${searchQuery.tags}`);
 
 export const fetchPost = (id) => {
-    console.log('fetchPost: ', id);
     return axiosAPI.get(`posts/${id}`);
 }
 
