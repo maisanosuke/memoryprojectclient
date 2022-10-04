@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {AppBar, Typography, Toolbar, Button, Avatar} from "@material-ui/core";
+import {AppBar, Typography, Toolbar, Button, Avatar, Grid} from "@material-ui/core";
 import memoriesLogo from "../../images/memories-Logo.png";
 import memoriesText from "../../images/memories-Text.png";
 import useStyles from "./styles";
@@ -39,22 +39,27 @@ export default function Navbar(){
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Link to="/" className={classes.brandContainer}>
-            <img src={memoriesText} alt="icon" height='45px' />
-            <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />
-          </Link>
-          <Toolbar className={classes.toolbar}>
-            {
-              user ? (
-                <div className={classes.profile}>
-                  <Avatar className={classes.purple} alt={user.name} src={user.imageUrl}>{user.name.charAt(0)}</Avatar>
-                  <Typography className={classes.userName} variant='h6'>{user.name}</Typography>
-                  <Button color='secondary' variant='contained' onClick={handleLogout}>Log out</Button>
-                </div>)
-                : <Button color='primary' variant='contained' component={Link} to='/auth'>Sign in</Button>
-            }
-
-          </Toolbar>
+          <Grid className={classes.gridContainer} container>
+            <Grid item xs={12} sm={6}>
+              <Link to="/" className={classes.brandContainer}>
+                <img src={memoriesText} alt="icon" height='45px' />
+                <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />
+              </Link>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Toolbar className={classes.toolbar}>
+                {
+                  user ? (
+                    <div className={classes.profile}>
+                      <Avatar className={classes.purple} alt={user.name} src={user.imageUrl}>{user.name.charAt(0)}</Avatar>
+                      <Typography className={classes.userName} variant='h6'>{user.name}</Typography>
+                      <Button color='secondary' variant='contained' onClick={handleLogout}>Log out</Button>
+                    </div>)
+                    : <Button color='primary' variant='contained' component={Link} to='/auth'>Sign in</Button>
+                }
+              </Toolbar>
+            </Grid>
+          </Grid>
         </AppBar>
     );
 }

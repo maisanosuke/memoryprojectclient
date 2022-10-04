@@ -58,6 +58,11 @@ export default function Post({post/*, currentEditingId, setCurrentEditingId*/}){
         history.push(`/posts/${_id}`)
     }
 
+    const editPost = (e) => {
+        e.stopPropagation(); //stops triggering onclick on ButtonBase
+        dispatch(updateId(_id));
+    }
+
     return(
         <Card className={classes.card} raised elevation={6}>
             <ButtonBase className={classes.cardAction} onClick={openPost}>
@@ -68,7 +73,7 @@ export default function Post({post/*, currentEditingId, setCurrentEditingId*/}){
                 </div>
                 {user && user._id === createrId && 
                 <div className={classes.overlay2}>
-                    <Button style={{color: 'white'}} size='small' onClick={()=>{/*setCurrentEditingId(_id);*/dispatch(updateId(_id))}}>
+                    <Button style={{color: 'white'}} size='small' onClick={editPost}>
                         <MoreHorizIcon fontSize="medium"/>
                     </Button>
                 </div>}

@@ -68,7 +68,7 @@ export default function Form(/*{currentEditingId, setCurrentEditingId}*/){
             <form autoComplete="off" noValidate className={`${classes.form} ${classes.root}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">{/*currentEditingId*/editingId ? "Editing" : "Creating"} a Memory</Typography>
                 <TextField name='title' variant="outlined" label="Title" fullWidth onChange={handleChange} value={form.title}/>
-                <TextField name='message' variant="outlined" label="Message" fullWidth row='5' col='30' onChange={handleChange} value={form.message}/>
+                <TextField name='message' multiline variant="outlined" label="Message" fullWidth rows={5} col='30' onChange={handleChange} value={form.message}/>
                 <TextField name='tags' variant="outlined"  label="Tags (comma separated)" fullWidth type='text' onChange={handleChange} value={form.tags}/>
                 <div className={classes.fileInput}><FileBase name='selectedFile' type="file" onDone={({base64})=>setForm(prevForm=>({...prevForm, selectedFile: base64}))} multipleFile={false}/></div>
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type='submit' fullWidth>SUBMIT</Button>
